@@ -16,7 +16,8 @@ TAU = 1e-3              # for soft update of target parameters
 LR_ACTOR = 1e-4         # actor learning rate
 LR_CRITIC = 1e-3        # critic learning rate
 WEIGHT_DECAY = 0        # L2 weight decay
-UPDATE_EVERY = 10        # how often to update the network
+UPDATE_EVERY = 20       # how often to update the network
+UPDATE_TIMES = 10       # for each update the network how many times
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -59,7 +60,7 @@ class OU_Noise:
 class Agent():
     """Interacts with and learns from the environment."""
 
-    def __init__(self, state_size, action_size, seed):
+    def __init__(self, num_agents, state_size, action_size, seed):
         """Initialize an Agent object.
         
         Params
@@ -68,6 +69,7 @@ class Agent():
             action_size (int): dimension of each action
             seed (int): random seed
         """
+        self.num_agents = num_agents
         self.state_size = state_size
         self.action_size = action_size
         self.seed = random.seed(seed)
@@ -93,28 +95,30 @@ class Agent():
     def reset(self):
         self.noise.reset()
     
-    def step(self, state, action, reward, next_state, done):
-        # Save experience in replay memory
-        self.memory.add(state, action, reward, next_state, done)
+    def step(self, states, actions, rewards, next_states, dones):
+        # Save experience in replay memory        
+        for i in range(self.num_agents):
+            self.memory.add(states[i], actions[i], rewards[i], next_states[i], dones[i])
         
-        # Learn every UPDATE_EVERY time steps.
+        # update the network UPDATE_TIMES times for every UPDATE_EVERY time steps.
         self.t_step = (self.t_step + 1) % UPDATE_EVERY
         if self.t_step == 0:
             # If enough samples are available in memory, get random subset and learn
             if len(self.memory) > BATCH_SIZE:
-                experiences = self.memory.sample()
-                self.learn(experiences, GAMMA)
-
-    def act(self, state, add_noise=True):
+                for i in range(UPDATE_TIMES):
+                    experiences = self.memory.sample()
+                    self.learn(experiences, GAMMA)
+                
+    def act(self, states, add_noise=True):
         """
         Returns actions for given state as per current policy.
         :param state: current state
         :param add_noise: whether to add Ornstein-Uhlenbeck noise
         """
-        state = torch.from_numpy(state).float().to(device)
+        states = torch.from_numpy(states).float().to(device)
         self.actor_local.eval()
         with torch.no_grad():
-            action_values = self.actor_local(state).cpu().data.numpy()
+            action_values = self.actor_local(states).cpu().data.numpy()
         self.actor_local.train()
 
         # add OU_noise to action to explore
