@@ -17,7 +17,7 @@ LR_ACTOR = 1e-4         # actor learning rate
 LR_CRITIC = 1e-3        # critic learning rate
 WEIGHT_DECAY = 0        # L2 weight decay
 UPDATE_EVERY = 20       # how often to update the network
-UPDATE_TIMES = 10       # for each update the network how many times
+UPDATE_TIMES = 10       # for each update, update the network how many times
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -94,6 +94,7 @@ class Agent():
 
     def reset(self):
         self.noise.reset()
+        self.t_step = 0
     
     def step(self, states, actions, rewards, next_states, dones):
         # Save experience in replay memory        
