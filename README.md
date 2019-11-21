@@ -27,13 +27,13 @@ A movie clip demonstrating successfully trained agents (achieving an average sco
 
 ## Dependencies
 * Numpy
-* matplotlib
+* Matplotlib
 * PyTorch (0.4.0 or above)
-* ML-Agents toolkit (unityagents)
+* ML-Agents toolkit (`pip install unityagents`) 
 
 ## Usage
-* The Windows (64-bit) version of the environment is provided in this repo.
+* The Windows (64-bit) version of the environment is provided in this repo in the folder "Reacher_Windows_x86_64".
 * Mac OSX version can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
 * Linux version can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
 
-Follow the step by step instructions in **Report.ipynb** to start running the environment and train the agents.
+Follow the step by step instructions in **Report.ipynb** to start running the environment and training the agents.
