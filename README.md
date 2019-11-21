@@ -21,9 +21,19 @@ As an example, consider the plot below, where we have plotted the average score 
 The environment is considered solved, when the average (over 100 episodes) of those average scores is at least +30.
 
 ## Result
-A movie clip demonstrating successfully trained agents (achieving an average score of +35) is shown below
+A movie clip demonstrating successfully trained agents (achieving an average score of +35) is shown below. The robotic arms follow the targets (rotating green ball) most of the time.  
+
 ![trained agents](reacher.gif)  
 
 ## Dependencies
+* Numpy
+* matplotlib
+* PyTorch (0.4.0 or above)
+* ML-Agents toolkit (unityagents)
 
 ## Usage
+* The Windows (64-bit) version of the environment is provided in this repo.
+* Mac OSX version can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
+* Linux version can be downloaded [here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
+
+Follow the step by step instructions in **Report.ipynb** to start running the environment and train the agents.
