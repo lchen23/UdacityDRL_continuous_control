@@ -1,7 +1,7 @@
 # Training to control a robotic arm with DDPG algorithm
 
 ## Environment
-Unity Machine Learning Agents [ML-Agents](https://github.com/Unity-Technologies/ml-agents) is an open-source Unity plugin that enables games and simulations to serve as environments for training intelligent agents. 
+Unity Machine Learning Agents ([ML-Agents](https://github.com/Unity-Technologies/ml-agents)) is an open-source Unity plugin that enables games and simulations to serve as environments for training intelligent agents. 
 
 This repo presents code and step by step guide on how to train an intelligent agent to solve the [Reacher environment](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher).
 
