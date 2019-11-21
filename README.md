@@ -21,7 +21,7 @@ As an example, consider the plot below, where we have plotted the average score 
 The environment is considered solved, when the average (over 100 episodes) of those average scores is at least +30.
 
 ## Result
-A movie clip demonstrating successfully trained agents (achieving an average score of +35) is shown below. The robotic arms follow the targets (rotating green ball) most of the time.  
+A movie clip demonstrating successfully trained agents (achieving an average score of +35) is shown below. The robotic arms can follow the moving targets (rotating green ball) most of the time.  
 
 ![trained agents](reacher.gif)  
 
